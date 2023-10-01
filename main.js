@@ -23,6 +23,9 @@ const alice3 = document.querySelector("#alice3");
 // animating with pyramyd of dooom
 
 function animate_spiral(spiral, callback,){
+              // an alternative solution 
+
+              // spiral.animate(aliceTumbling, aliceTiming).onfinish = callback;
    let x = spiral.animate(aliceTumbling, aliceTiming,);
    x.finished.then(() => {
     callback();
