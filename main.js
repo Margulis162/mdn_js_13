@@ -52,18 +52,30 @@ const alice3 = document.querySelector("#alice3");
 
 //   animate_spiral();
 
-  function animate_obj_fx(spiral){
-    let animate_obj = spiral.animate(aliceTumbling, aliceTiming);
-    return(animate_obj);
-  }
+  // function animate_obj_fx(spiral){
+  //   let animate_obj = spiral.animate(aliceTumbling, aliceTiming);
+  //   return(animate_obj);
+  // }
 
   
 
-  animate_obj_fx(alice1).finished.then( () => animate_obj_fx(alice2).finished.then( () => animate_obj_fx(alice3)));
+  // animate_obj_fx(alice1).finished.then( () => animate_obj_fx(alice2).finished.then( () => animate_obj_fx(alice3)));
   
 
 
 // animatin with  async and await
+  
+async function  animateAll(){
+  try{
+    const response1 =  await alice1.animate(aliceTumbling, aliceTiming).finished;
+    const response2 = await alice2.animate(aliceTumbling, aliceTiming).finished;
+    response2.then(
+      alice3.animate(aliceTumbling, aliceTiming));
+    
+  } catch{
+    console.log("error");
+  }
+}
 
-
+animateAll();
 // alice1.animate(aliceTumbling, aliceTiming,);
